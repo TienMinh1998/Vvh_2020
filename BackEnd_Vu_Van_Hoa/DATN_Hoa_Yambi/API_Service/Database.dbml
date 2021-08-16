@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VuVanHoa_nenmong" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=VuVanHoa_nenmong;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="VuVanHoa_nenmongConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_lop_dat" Member="tbl_lop_dats">
+    <Type Name="tbl_lop_dat">
+      <Column Name="id_lop_dat" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaLopDat" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="chieuday" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="n" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="loaidat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="trangthai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="dungtrongrieng" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="modundanhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gocmasat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="doroi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="suckhangxuyen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="is_delete" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="k" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="alpha" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="vitritrentrudiachat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
