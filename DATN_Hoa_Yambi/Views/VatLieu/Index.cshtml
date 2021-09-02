@@ -1,0 +1,251 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <div style="width:100%; background-color:#ffffff">
+            <div class="card card-custom">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        CHỌN VẬT LIỆU CHO CỌC.
+                    </h3>
+                </div>
+                <!--begin::Form-->
+                <form class="form">
+                    <div class="card-body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                <div class="alert-text" style="color:blueviolet; font-size:18px;">
+                                    BÊ TÔNG ĐÃ CHỌN : <span id="betong_coc" name="betong_coc">Chưa chọn</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                <div class="alert-text" style="color:blueviolet; font-size:18px;">
+                                    CỐT THÉP : <span id="cotthep_coc" name="cotthep_coc">Chưa Chọn.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label >CHỌN BÊ TÔNG CHO CỌC.</label>
+                            <div></div>
+                            <select class="custom-select form-control" id="cbx_betong_coc" name="cbx_betong_coc">
+                                <option selected value="0">B15</option>
+                                <option value="1">B20</option>
+                                <option value="2">B25</option>
+                                <option value="3">B30</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>CHỌN CỐT THÉP CHO CỌC.</label>
+                            <div></div>
+                            <select class="custom-select form-control" id="cbx_cot_thep_coc" name="cbx_cot_thep_coc">
+                                <option selected value="0">CB240-T</option>
+                                <option value="1">CB300-V</option>
+                                <option value="2">CB350-V</option>
+                                <option value="3">CB400-V</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="card-footer">
+                    <button type="reset" class="btn btn-primary mr-2" id="btn_xac_nhan" name="btn_xac_nhan">Xác nhận.</button>
+                    <button type="reset" class="btn btn-secondary">Hủy.</button>
+                </div>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+
+    <!--Phần đài cọc:-->
+    <div class="col-lg-6">
+        <div style="width:100%; background-color:#ffffff">
+            <div class="card card-custom">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        CHỌN VẬT LIỆU CHO ĐÀI CỌC.
+                    </h3>
+                </div>
+                <!--begin::Form-->
+                <form class="form">
+                    <div class="card-body">
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                <div class="alert-text" style="color:blueviolet; font-size:18px;">
+                                    BÊ TÔNG ĐÀI ĐÃ CHỌN : <span id="betong_dai" name="betong_dai">B15</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-last">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                <div class="alert-text" style="color:blueviolet; font-size:18px;">
+                                    CỐT THÉP ĐÀI ĐÃ CHỌN : <span id="cotthep_dai" name="cotthep_dai">CB350-V</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>CHỌN BÊ TÔNG CHO ĐÀI.</label>
+                            <div></div>
+                            <select class="custom-select form-control" id="cbx_betong_dai" name="cbx_betong_dai">
+                                <option selected value="0">B15</option>
+                                <option value="1">B20</option>
+                                <option value="2">B25</option>
+                                <option value="3">B30</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>CHỌN CỐT THÉP CHO ĐÀI.</label>
+                            <div></div>
+                            <select class="custom-select form-control" id="cbx_cot_thep_dai" name="cbx_cot_thep_dai">
+                                <option selected value="0">CB240-T</option>
+                                <option value="1">CB300-V</option>
+                                <option value="2">CB350-V</option>
+                                <option value="3">CB400-V</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="card-footer">
+                    <button type="reset" class="btn btn-primary mr-2" id="btn_xac_nhan_dai" name="btn_xac_nhan_dai">Xác nhận.</button>
+                    <button type="reset" class="btn btn-secondary">Hủy.</button>
+                </div>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <!--Kết thúc phần chọn đài cọc-->
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Bê tông cho cọc
+        $("#cbx_betong_coc").change(function () {         
+            var betong = $(this).val();  
+            getbetong(betong);    
+        });
+        // cốt thép
+        $("#cbx_cot_thep_coc").change(function () {
+            var cotthep = $(this).val();        
+            getCotThepCoc(cotthep);
+        });
+
+        // phần chọn cho đài======================================================================
+        // bê tông cho đài
+        $("#cbx_betong_dai").change(function () {   
+            var betong = $(this).val();
+            getbetong_dai(betong);  
+        });
+        // cốt thép cho đài.
+        $("#cbx_cot_thep_dai").change(function () {
+            var cotthep = $(this).val();
+            getCotThepDai(cotthep);
+        });
+    });
+
+
+    function delete_click(id) {
+        $.ajax({
+            url: "/DanhMuc/XoaDanhMuc",
+            type: "post",
+
+            data: { id: id },
+            success: function (result) {
+                toastr["success"](result);
+                LoadDataBase();
+            }
+
+        });
+    }
+
+    $("#btn_xac_nhan").click(function () {
+        var betong_code = $("#cbx_betong_coc").val();
+        $.ajax({
+            url: "/VatLieu/getvatlieu_coc",
+            type: "post",
+            data: { betong: betong_code },
+            success: function (result) {
+                alert(result);
+            }
+        });
+    });
+
+    function getbetong(btcode) {
+        var str = "";
+        $.ajax({
+            url: "/VatLieu/getvatlieu_coc",
+            type: "post",
+            data: { btcode: btcode },
+            success: function (result) {
+                var betong = JSON.parse(result);
+                str += "Bê tông : " + betong.tenbetong;
+                str += " Mã bê tông : " + betong.mabetong;
+                str += " Rb : " + betong.rb;
+                str += " Rbt : " + betong.rbt;
+                $("#betong_coc").html(str);
+            }
+        });
+    }
+    function getbetong_dai(btcode) {
+        var str = "";
+        $.ajax({
+            url: "/VatLieu/getvatlieu_dai",
+            type: "post",
+            data: { btcode: btcode },
+            success: function (result) {
+                var betong = JSON.parse(result);
+                str += "Bê tông : " + betong.tenbetong;
+                str += " Mã bê tông : " + betong.mabetong;
+                str += " Rb : " + betong.rb;
+                str += " Rbt : " + betong.rbt;
+                $("#betong_dai").html(str);
+            }
+        });
+    }
+
+    function getCotThepCoc(ctcode) {
+        var str = "";
+        $.ajax({
+            url: "/VatLieu/getVatLieuCotThepCoc",
+            type: "post",
+            data: { ctcode: ctcode },
+            success: function (result) {
+                var cotthep = JSON.parse(result);
+                str += "Cốt thép : " + cotthep.TenCotThep;
+                str += " Mã Cốt thép : " + cotthep.MaCotThep;
+                str += " Rs : " + cotthep.Rs;
+                str += " Rsc : " + cotthep.Rsc;
+                $("#cotthep_coc").html(str);
+            }
+        });
+    }
+
+    function getCotThepDai(ctcode) {
+        var str = "";
+        $.ajax({
+            url: "/VatLieu/getVatLieuCotThepDai",
+            type: "post",
+            data: { ctcode: ctcode },
+            success: function (result) {
+                var cotthep = JSON.parse(result);
+                str += "Cốt thép : " + cotthep.TenCotThep;
+                str += " Mã Cốt thép : " + cotthep.MaCotThep;
+                str += " Rs : " + cotthep.Rs;
+                str += " Rsc : " + cotthep.Rsc;
+                $("#cotthep_dai").html(str);
+            }
+        });
+    }
+</script>
+
+
+

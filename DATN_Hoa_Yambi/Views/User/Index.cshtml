@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12" style="background-color:#ffffff">
+        <form id="act_form" method="post" action="#" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group mb-12">
+                    <div class="alert alert-custom alert-default" role="alert">
+                        <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                        <div class="alert-text">
+                            Chú ý: <code>Việc đăng kí : </code>Nhập đủ thông tin đăng kí của người dùng vào các ô textbox bên dưới, Nếu thông tin đã tồn tại, bạn có thể đi tính toán luôn
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Mã NGười DUngf Trường thứ nhất-->
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Nhập mã người dùng <span class="text-danger">*</span>  :</label>
+                    <div class="col-7">
+                        <input class="form-control" type="text" value="USER001" id="txt_ma_nguoi_dung" name="txt_ma_nguoi_dung">
+                    </div>
+                    <label class="col-2 col-form-label">:))</label>
+                </div>
+
+                <!--Tên Người DÙng Trường thứ 2-->
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Nhập Tên của người dùng <span class="text-danger">*</span> :</label>
+                    <div class="col-7">
+                        <input class="form-control" type="search" value="Vũ Văn Hòa." id="txt_ten_nguoi_dung" name="txt_ten_nguoi_dung">
+                    </div>
+                    <div class="col-2 col-form-label">...</div>
+                </div>
+
+                <!--Số điện thoại Trường THứ 3:-->
+                <div class="form-group row">
+                    <label class="col-3 col-form-label">Số Điện Thoại <span class="text-danger">*</span>  :</label>
+                    <div class="col-7">
+                        <input class="form-control" type="search" value="123456789" id="txt_so_dien_thoai" name="txt_so_dien_thoai">
+                    </div>
+                    <div class="col-2 col-form-label">...</div>
+                </div>
+                <!--Hết các trường-->
+            </div>
+        </form>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-10">
+                    <button type="reset" id="btn_nhap_lieu_coc" name="btn_nhap_lieu_coc" class="btn btn-instagram mr-2 float-right">Đăng Kí Sử Dụng.</button>
+                    <button type="reset" id="btn_tinhtoan" name="btn_tinh_toan" class="btn btn-light-facebook mr-2 float-right">Bắt Đầu Tính toán</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+
+
+        $("#btn_nhap_lieu_coc").click(function () {
+            var chieudaylopdat = $("#txt_chieu_day").val();
+
+            if (chieudaylopdat == "") {
+                alert("Bạn chưa nhập chiều dayflowps đất.");
+            }
+            else {
+                var form = $('#act_form')[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: '/User/AddNewUser',
+                    data: data, // $("#form_act").serialize(),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+                        alert(response);
+                      
+                    },
+                    error: function (rs) {
+                        console.log(rs);
+                        //toastr["error"]("Có lỗi xảy ra trong quá trình tạo mới Khách hàng. Vui lòng thử lại sau");
+                    }
+                });
+            }
+        });
+
+
+        $("#btn_tinhtoan").click(function () {
+            
+                var form = $('#act_form')[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: '/User/BatDauTinhToan',
+                    data: data, // $("#form_act").serialize(),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+                        alert("Bắt Đầu Tính Toán Với dữ liệu của người dùng : " + response);
+                        window.location.href = "/NhapLieu";
+                    },
+                    error: function (rs) {
+                        console.log(rs);
+                        //toastr["error"]("Có lỗi xảy ra trong quá trình tạo mới Khách hàng. Vui lòng thử lại sau");
+                    }
+                });
+            
+        });
+    })
+
+</script>

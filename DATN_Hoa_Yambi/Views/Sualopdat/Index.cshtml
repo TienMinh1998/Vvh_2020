@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-custom card-sticky" id="kt_page_sticky_card">
+    <div class="card-header" style="">
+        <div class="card-title">
+            <h3 class="card-label">
+               Trang sửa thông tin địa chất.
+                <i class="mr-2"></i>
+                <small class="">Sửa thông tin địa chất sẽ ảnh hưởng đến các giá trị tính toán.</small>
+            </h3>
+        </div>
+        <div class="card-toolbar">
+            <a href="/Diachat" class="btn btn-light-primary font-weight-bolder mr-2">
+                <i class="ki ki-long-arrow-back icon-sm"></i>Back
+            </a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary font-weight-bolder" id="btn_Save" name="btn_Save">
+                    <i class="ki ki-check icon-sm"></i>Lưu Lại
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                    <ul class="nav nav-hover flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon flaticon2-reload"></i>
+                                <span class="nav-text">Save &amp; continue</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon flaticon2-add-1"></i>
+                                <span class="nav-text">Save &amp; add new</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon flaticon2-power"></i>
+                                <span class="nav-text">Save &amp; exit</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin::Form-->
+        <form id="act_form" method="post" action="#" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-xl-2"></div>
+                <div class="col-xl-8">
+                    <div class="my-5">
+                        <h3 class="text-dark font-weight-bold mb-10">Sửa thông tin theo số liệu mới.:</h3>
+
+                        <!--Mã lớp đất-->
+                        <div class="form-group row">
+                            <label class="col-3">Mã lớp đất :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" id="txt_malopdat" name="txt_malopdat">
+                            </div>
+                        </div>
+                        <!--loại đất-->
+                        <div class="form-group row">
+                            <label class="col-3">Loại đất :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" id="txt_loaidat" name="txt_loaidat" >
+                            </div>
+                        </div>
+                        <!--Trạng Thái-->
+                        <div class="form-group row">
+                            <label class="col-3">Trạng thái đất:</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" id="txt_trangthai" name="txt_trangthai">
+                            </div>
+                        </div>
+                        <!--Chiều dạy-->
+                        <div class="form-group row">
+                            <label class="col-3">Chiều dày của lớp đất:</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_chieuday" id="txt_chieuday">
+                                <span class="form-text text-muted">Chiều dày của lớp đất được tính là m.</span>
+                            </div>
+                        </div>
+
+                        <!--Dung Trọng Riêng-->
+                        <div class="form-group row">
+                            <label class="col-3">Dung trọng riêng:</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_dungtrongrieng" id="txt_dungtrongrieng">
+                               
+                            </div>
+                        </div>
+
+                        <!--Mô Đun đàn hồi:-->
+                        <div class="form-group row">
+                            <label class="col-3">Mô đun đàn hồi :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_modundanhoi" id="txt_modundanhoi">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--Góc ms trong-->
+                        <div class="form-group row">
+                            <label class="col-3">Góc ma sát trong :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_gocmasattrong" id="txt_gocmasattrong">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--Độ rời:-->
+                        <div class="form-group row">
+                            <label class="col-3">Độ rời :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" id="txt_doroi" name="txt_doroi">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--QC-->
+                        <div class="form-group row">
+                            <label class="col-3">Qc :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" name="txt_qc" id="txt_qc">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--N-->
+                        <div class="form-group row">
+                            <label class="col-3">N :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_n" id="txt_n">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--K :-->
+                        <div class="form-group row">
+                            <label class="col-3">hệ Số K :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_k" id="txt_k">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+
+                        <!--anpah-->
+                        <div class="form-group row">
+                            <label class="col-3">hs alpha :</label>
+                            <div class="col-9">
+                                <input class="form-control form-control-solid" type="text" name="txt_alpha" id="txt_alpha">
+                                <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-10"></div>
+               
+                    
+     
+                </div>
+                <div class="col-xl-2"></div>
+            </div>
+        </form>
+        <!--end::Form-->
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        var url = new URL(window.location.href);
+        var ma_lop_dat = url.searchParams.get("id");
+
+        $.ajax({
+            url: '/Sualopdat/Editlopdat',
+            type: "post",
+            data: { ma_lop_dat: ma_lop_dat },
+            success: function (result) {
+                var lopdat = JSON.parse(result);
+                $('#txt_malopdat').val(lopdat.MaLopDat);
+                $('#txt_loaidat').val(lopdat.loaidat);
+                $('#txt_trangthai').val(lopdat.trangthai);
+                $('#txt_chieuday').val(lopdat.chieuday);
+                $('#txt_dungtrongrieng').val(lopdat.dungtrongrieng);
+                $('#txt_modundanhoi').val(lopdat.modundanhoi);
+                $('#txt_gocmasattrong').val(lopdat.gocmasat);
+                $('#txt_doroi').val(lopdat.doroi);
+                $('#txt_qc').val(lopdat.suckhangxuyen);
+                $('#txt_n').val(lopdat.n);
+                $('#txt_k').val(lopdat.k);
+                $('#txt_alpha').val(lopdat.alpha);
+
+            }
+        });
+
+    // Bấm lưu lại :
+        $("#btn_Save").click(function () {
+            //validate dữ liệu         
+            var form = $('#act_form')[0];
+            var data = new FormData(form);
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: '/Sualopdat/LuuLaiChinhsua',
+                data: data, // $("#form_act").serialize(),
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    alert(response);
+                },
+                error: function (rs) {
+                    console.log(rs);
+                }
+            });
+        });
+
+
+    })
+</script>

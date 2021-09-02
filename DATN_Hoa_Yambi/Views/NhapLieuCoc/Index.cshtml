@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="col-lg-12" style="background-color:#ffffff">
+        <form id="act_form" method="post" action="#" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group mb-12">
+                    <div class="alert alert-custom alert-default" role="alert">
+                        <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                        <div class="alert-text">
+                            Chú ý: <code>Thêm Cọc: </code>Thêm Thông số của cọc mới.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Mã cọc-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Mã Cọc</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" value="COC001" id="txt_ma_coc" name="txt_ma_coc">
+                    </div>
+                    <label class="col-2 col-form-label">:))</label>
+                </div>
+
+                <!--Tên cọc:-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Nhập Tên Của Cọc :</label>
+                    <div class="col-8">
+                        <input class="form-control" type="search" value="Cọc Thứ Nhất" id="txt_ten_coc" name="txt_ten_coc">
+                    </div>
+                    <div class="col-2 col-form-label">Name</div>
+                </div>
+
+                <!--Độ Dài của cọc:-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Độ Dài của cọc</label>
+                    <div class="col-8">
+                        <input class="form-control" type="search" value="16" id="txt_do_dai_coc" name="txt_do_dai_coc">
+                    </div>
+                    <div class="col-2 col-form-label">m</div>
+                </div>
+
+
+                <!--Đường Kính của cọc-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Đường kính của cọc :</label>
+                    <div class="col-8">
+                        <input class="form-control" type="search" value="0.35" id="txt_duong_kinh_coc" name="txt_duong_kinh_coc">
+                    </div>
+                    <div class="col-2 col-form-label">m</div>
+                </div>
+
+
+                <!--Số Thanh Thép-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Số Thanh Thép Trong cọc :</label>
+                    <div class="col-8">
+                        <input class="form-control" type="search" value="4" id="txt_so_thanh_thep" name="txt_so_thanh_thep">
+                    </div>
+                    <div class="col-2 col-form-label">thanh</div>
+                </div>
+
+                <!--Đường kính thép cọc.-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Đường Kính Thép cọc :</label>
+                    <div class="col-8">
+                        <input class="form-control" type="search" value="16" id="txt_duong_kinh_thep_coc" name="txt_duong_kinh_thep_coc">
+                    </div>
+                    <div class="col-2 col-form-label">mm</div>
+                </div>
+
+                <!--Bê tông sử dụng.-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Bê Tông Sử Dụng:</label>
+                    <div class="col-8">
+                        <select class="custom-select form-control" type="search" id="cbb_betong" name="cbb_betong">
+                            <option value="0">B15</option>
+                            <option selected value="1">B20</option>
+                            <option value="2">B25</option>
+                            <option value="3">B30</option>
+                            <option value="4">B35</option>
+                        </select>
+                    </div>
+                    <div class="col-2 col-form-label">mm</div>
+                </div>
+
+
+                <!--Cốt thép sử dụng-->
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Chọn Cốt thép:</label>
+                    <div class="col-8">
+                        <select class="custom-select form-control" type="search"  id="cbb_cotthep" name="cbb_cotthep">
+                            <option value="0">CB-240-T</option>
+                            <option selected value="1">CB-300-T</option>
+                            <option>CB-300-V</option>
+                            <option>CB-350-V</option>
+                            <option>Cb-400-V</option>
+                        </select>
+                    </div>
+                    <div class="col-2 col-form-label">mm</div>
+                </div>
+            </div>
+        </form>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-2">
+                </div>
+                <div class="col-10">
+                    <button type="reset" id="btn_nhap_lieu_coc" name="btn_nhap_lieu_coc" class="btn btn-success mr-2">Xem Sức Chịu Tải.</button>
+                    <button type="submit" id="btn_them_coc" name="btn_them_coc" class="btn btn-danger mr-2">Thêm Cọc.</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+<script>
+
+    $(document).ready(function () {
+
+    
+        $("#btn_nhap_lieu_coc").click(function () {
+            var chieudaylopdat = $("#txt_chieu_day").val();
+
+            if (chieudaylopdat == "") {
+                alert("Bạn chưa nhập chiều dayflowps đất.");
+            }
+            else {
+                var form = $('#act_form')[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: '/NhapLieuCoc/NhapLieuCoc',
+                    data: data, // $("#form_act").serialize(),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (rs) {
+                        console.log(rs);
+                        //toastr["error"]("Có lỗi xảy ra trong quá trình tạo mới Khách hàng. Vui lòng thử lại sau");
+                    }
+                });
+            }
+        });
+
+
+        $("#btn_them_coc").click(function () {
+            var chieudaylopdat = $("#txt_chieu_day").val();
+
+            if (chieudaylopdat == "") {
+                alert("Bạn chưa nhập chiều dayflowps đất.");
+            }
+            else {
+                var form = $('#act_form')[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: '/NhapLieuCoc/AddNewCoc',
+                    data: data, // $("#form_act").serialize(),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+                        alert(response);
+                    },
+                    error: function (rs) {
+                        console.log(rs);
+                        //toastr["error"]("Có lỗi xảy ra trong quá trình tạo mới Khách hàng. Vui lòng thử lại sau");
+                    }
+                });
+            }
+        });
+    })
+
+</script>
+

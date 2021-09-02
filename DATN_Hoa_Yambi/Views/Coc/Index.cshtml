@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="background-color:#ffffff; width:100%" >
+    <h1 style="padding-top:5px;">DANH SÁCH CÁC CỌC TRONG CƠ SỞ DỮ LIỆU.</h1>
+    <p style="padding-left:10px;" class="dinhnghia">Đây là danh sách các cọc, bạn chọn 1 cọc để đi tính toán, hoặc có thể thêm 1 cọc mới.</p>
+    <div class="table-responsive-lg" style="padding:5px;">
+        <table class="table p-lg-5" border="1">
+            <thead c>
+                <tr>
+                    <td >Mã Cọc</td>
+                    <td>Tên Cọc</td>
+                    <td>Độ Dài</td>
+                    <td>Đường Kính Cọc.</td>
+                    <td>Số Thanh Thép.</td>
+                    <td>DK THép.</td>
+                    <td>ID THEP</td>
+                    <td>ID BT</td>
+                    <td>PVL</td>
+                    <td>Thao Tác</td>
+
+                </tr>
+            </thead>
+            <tbody id="tbody_dsDanhMuc">
+                <tr>
+                    <td>1</td>
+                    <td>Sét Pha</td>
+                    <td>Dẻo mềm.</td>
+                    <td>3.2</td>
+                    <td>18.6</td>
+                    <td>4800</td>
+                    <td>10</td>
+                    <td>9</td>
+                    <td>1200</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--Thêm cọc mới : -->
+    <div class="card-footer">
+        <div class="row">        
+            <div class="col-12">
+                <a href="~/NhapLieuCoc" class="btn btn-success mr-2">Thêm Cọc Mới.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+    
+
+
+        $.ajax({
+            url: "/Coc/getListCoc",      // đây là API lấy ra tất cả các lớp đất
+            type: "post",
+            success: function (result) {
+                // Pare Chuỗi Json vừa mới nhận được từ server:
+                var dsdm = JSON.parse(result);
+                var str = ""
+                for (var i = 0; i < dsdm.length; i++) {
+                    str += "<tr>";
+                    str += "<td>" + dsdm[i].MaCoc + "</td>"; // code soid layer
+                    str += "<td>" + dsdm[i].TenCoc + "</td>";
+                    str += "<td>" + dsdm[i].DoDai + "</td>";
+                    str += "<td>" + dsdm[i].DuongKinhCoc+ "</td>";
+                    str += "<td>" + dsdm[i].SoThanhThep+ "</td>";
+                    str += "<td>" + dsdm[i].DuongKinhThep + "</td>";
+                    str += "<td>" + dsdm[i].IDCotThep + "</td>";
+                    str += "<td>" + dsdm[i].id_betong + "</td>";
+                    str += "<td>" + dsdm[i].SucChiuTai + "</td>";   
+                    str += "<td><a href='coc?id=1'>Sửa</a><a href='/PVL?id="+dsdm[i].MaCoc+"' style='margin-left:10px'>Chọn.</a></td>";   
+                    str += "</tr>";
+                }
+
+                $("#tbody_dsDanhMuc").html(str);
+            }
+        });
+    })
+
+</script>
+

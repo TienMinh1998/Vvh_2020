@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+            <div class="card card-custom">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        TẢI TRỌNG TÍNH TOÁN DƯỚI CHÂN CỘT.
+                    </h3>
+                </div>
+                <!--begin::Form-->
+                <form id="act_form" method="post" action="#" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div class="form-group mb-8">
+                            <div class="alert alert-custom alert-default" role="alert">
+                                <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                                <div class="alert-text">
+                                    Chú ý: <code>Bắt buộc.</code> bạn phải nhập đủ các thông số trước khi tính toán, nếu không kết quả sai số web ko chịu trách nhiệm.
+                                </div>
+                            </div>
+                        </div>
+                        <!--No-->
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">No(T)</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="120" id="txt_No" name="txt_No" />
+                            </div>
+                            <label class="col-2 col-form-label">Tấn.</label>
+                        </div>
+
+                        <!--Mo-->
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Mo(T.M)</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="15.9" id="txt_Mo" name="txt_Mo" />
+                            </div>
+                            <label class="col-2 col-form-label">Tấn.Mét</label>
+                        </div>
+
+                        <!--Qo-->
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Qo(T)</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="3.2" id="txt_Qo" name="txt_Qo" />
+                            </div>
+                            <label class="col-2 col-form-label">Tấn</label>
+                        </div>
+
+                        <!--bc-->
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">bề rộng tiết diện cột.</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="35" name="txt_Bcot" id="txt_Bcot" />
+                            </div>
+                            <label class="col-2 col-form-label">cm</label>
+                        </div>
+
+                        <!--bc-->
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Chiều dài tiết diện cột.</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="40" id="txt_Hcot" name="txt_Hcot" />
+                            </div>
+                            <label class="col-2 col-form-label">cm</label>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-2 col-form-label">Chiều cao của đài :</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" value="40" id="txt_Hdai" name="txt_Hdai" />
+                            </div>
+                            <label class="col-2 col-form-label">m</label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-2">
+                            </div>
+                            <div class="col-10">
+                                <button type="reset" class="btn btn-success mr-2" id="btn_ThemTaiTrong" name="btn_ThemTaiTrong">lƯU lẠI TẢI TRỌNG.</button>
+                                <button type="reset" class="btn btn-secondary" id="btn_dong"><a href="/TrangChu">Đóng</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+ 
+
+
+
+<script>
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "POST",
+            url: '/NhapLieu/getdataTaiTrong',
+            success: function (rel) {
+                var re = JSON.parse(rel);             
+                $('#txt_No').val(re.No);
+                $('#txt_Mo').val(re.Mo);
+                $('#txt_Qo').val(re.Qo);
+                $('#txt_Bcot').val(re.b_cot);
+                $('#txt_Hcot').val(re.h_cot);
+                $('#txt_Hdai').val(re.h_dai);
+         
+            },
+            error: function (rs) {
+                console.log(rs);
+            }
+        });
+
+        $("#btn_ThemTaiTrong").click(function () {
+            //validate dữ liệu         
+            var form = $('#act_form')[0];
+            var data = new FormData(form);
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: '/User/AddnewLoad',
+                data: data, // $("#form_act").serialize(),
+                processData: false,
+                contentType: false,
+                cache: false,
+                success: function (response) {
+                    window.location.href = "/Coc";
+                  
+                
+                },
+                error: function (rs) {
+                    console.log(rs);
+                }
+            });
+        });
+        $("#btn_dong").click(function () {
+          
+        });
+    })
+
+</script>

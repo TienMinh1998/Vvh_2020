@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid" style="background-color:snow; padding-top:20px; padding-bottom:50px;">
+    <div class="table-responsive-lg">
+        <table class="table" border="1" style="margin-top:20px;">
+            <thead c>
+                <tr>
+                    <td>Mã lớp đất.</td>
+                    <td>Loại đất</td>
+                    <td>Trạng thái</td>
+                    <td>Chiều dày</td>
+                    <td>Dung trọng riêng</td>
+                    <td>Modun đàn hồi.</td>
+                    <td>Góc MS trong.</td>
+                    <td>Độ rời</td>
+                    <td>Qc</td>
+                    <td>N</td>
+                    <td>K</td>
+                    <td>alpha</td>
+                    <td>Sửa.</td>
+
+                </tr>
+            </thead>
+            <tbody id="tbody_dsDanhMuc">
+            </tbody>
+        </table>
+
+
+        <button class="btn btn-light-google float-lg-right" id="btn_tinhtoan" name="btn_tinhtoan">Tiếp tục.</button>
+     <button class="btn btn-light-instagram mr-2 float-lg-right" id="btn_tinhtoan" name="btn_tinhtoan"><a href="/TrangChu">Trở về.</a></button>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+
+        $("#btn_nhap_lieu_dat").click(function () {
+            //validate dữ liệu
+            alert("Đang ấn vào nút nhập lieeum đất");
+            var chieudaylopdat = $("#txt_chieu_day").val();
+
+
+            if (chieudaylopdat == "") {
+                alert("Bạn chưa nhập chiều dayflowps đất.");
+            }
+            else {
+                var form = $('#act_form')[0];
+                var data = new FormData(form);
+                $.ajax({
+                    type: "POST",
+                    enctype: 'multipart/form-data',
+                    url: '/Service/NhapLieuDat',
+                    data: data, // $("#form_act").serialize(),
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (response) {
+
+                    },
+                    error: function (rs) {
+                        console.log(rs);
+                        //toastr["error"]("Có lỗi xảy ra trong quá trình tạo mới Khách hàng. Vui lòng thử lại sau");
+                    }
+                });
+            }
+        });
+
+
+
+        $.ajax({
+            url: "DiaChat/GetListDiaChat",      // đây là API lấy ra tất cả các lớp đất
+            type: "post",
+            success: function (result) {                
+                // Pare Chuỗi Json vừa mới nhận được từ server:
+                var dsdm = JSON.parse(result);
+                var str = ""
+                for (var i = 0; i < dsdm.length; i++) {
+                    str += "<tr>";
+                    str += "<td>" + dsdm[i].MaLopDat + "</td>"; // code soid layer
+                    str += "<td>" + dsdm[i].loaidat + "</td>";
+                    str += "<td>" + dsdm[i].trangthai + "</td>";
+                    str += "<td>" + dsdm[i].chieuday + "</td>";
+                    str += "<td>" + dsdm[i].dungtrongrieng + "</td>";
+                    str += "<td>" + dsdm[i].modundanhoi + "</td>";
+                    str += "<td>" + dsdm[i].gocmasat + "</td>";
+                    str += "<td>" + dsdm[i].doroi + "</td>";
+                    str += "<td>" + dsdm[i].suckhangxuyen + "</td>";
+                    str += "<td>" + dsdm[i].n + "</td>";
+                    str += "<td>" + dsdm[i].k + "</td>";
+                    str += "<td>" + dsdm[i].alpha + "</td>";
+                 
+                    str += " <td><button class='btn btn-light-facebook mr-2 float-lg-right' id='btn_tinhtoan' name='btn_tinhtoan'><a href='/Sualopdat?id=" + dsdm[i].MaLopDat + "'>Sửa lớp đất.</a></button></td>";
+                    str += "</tr>";
+                }
+
+                $("#tbody_dsDanhMuc").html(str);
+            }
+        });
+    })
+
+</script>

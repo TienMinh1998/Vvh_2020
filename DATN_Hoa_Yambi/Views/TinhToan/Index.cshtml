@@ -1,0 +1,336 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="card card-custom overflow-hidden">
+    <div class="card-body p-0">
+        <!-- begin: Invoice-->
+        <!-- begin: Invoice header-->
+        <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style=" background-image: url(../../assets/media/bg/bg-10.jpg);">
+            <div class="col-md-9">
+                <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
+                    <h1 class="display-4 text-white font-weight-boldest mb-10">TRANG TÍNH TOÁN MÓNG CỌC.</h1>
+                    <div class="d-flex flex-column align-items-md-end px-0">
+                        <!--begin::Logo-->
+                        <a href="#" class="mb-5">
+                            <img src="assets/media/logos/logo-light.png" alt="">
+                        </a>
+                        <!--end::Logo-->
+                        <span class="text-white d-flex flex-column align-items-md-end opacity-70">
+                            <span>Người thực hiện đồ án:</span>
+                            <span>Vũ Văn Hòa - 61TH1</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="border-bottom w-100 opacity-20"></div>
+
+            </div>
+        </div>
+        <!-- end: Invoice header-->
+        <!-- begin: Invoice body-->
+        <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+            <div class="col-md-9">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="pl-0 font-weight-bold text-muted text-uppercase">Description</th>
+
+                                <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Giá trị.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Sức chịu tải theo vật liệu :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_pvl" name="txt_pvl">0</td>
+                            </tr>
+
+
+
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Sức chịu tải theo SPT : </td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_spt" name="txt_spt">0</td>
+                            </tr>
+
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Sức chịu tải théo CPT :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_cpt" name="txt_cpt">0</td>
+                            </tr>
+                            <!--End Rbt-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Tải trọn tiêu chuẩn (N[tc]) :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_Ntc" name="txt_Ntc">0</td>
+                            </tr>
+
+
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Hệ Số Beta  (Beta) :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_hesoB" name="txt_hesoB">1,2</td>
+                            </tr>
+                            <!--Soos coc tinh toan-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Số Cọc tính toán (N_ctt) :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_coctt" name="txt_coctt">0</td>
+                            </tr>
+
+                            <!--Soos coc tinh toan-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Số cọc chọn lại N_chọn lại  :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_sococchonlai" name="txt_sococchonlai">0</td>
+                            </tr>
+
+                            <!--Chiều Dài của Đài :-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Chiều Dài L Đài :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_Ldai" name="txt_Ldai">Chưa Tính</td>
+                            </tr>
+
+                            <!--Chiều Rộng Đài :-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Chiều rộng B đài :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_Bdai" name="txt_Bdai">Chưa Tính</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="card card-custom">
+    <div class="card-header">
+        <h3 class="card-title">
+            TÍNH TOÁN SƠ BỘ SỐ LƯỢNG CỌC:
+        </h3>
+    </div>
+    <!--begin::Form-->
+    <form class="form">
+        <div class="card-body">
+            <!--Chọn sức chịu tải-->
+            <div class="form-group">
+                <label for="exampleSelects">Chọn sức chịu tải để đi tính toán.</label>
+                <select class="form-control form-control-sm" value="0" id="cbb_succhiutai" name="cbb_succhiutai">
+                </select>
+            </div>
+            <!--Chọn Lại Cọc-->
+            <div class="form-group">
+                <label for="exampleSelects">Chọn sức chịu tải để đi tính toán.</label>
+                <select class="form-control form-control-sm" value="0" id="cbb_chonlaicoc" name="cbb_chonlaicoc">
+                    <option value="2" selected>2 cọc</option>
+                    <option value="3">3 cọc</option>
+                    <option value="4">4 cọc</option>
+                    <option value="5">5 cọc</option>
+                    <option value="6">6 cọc</option>
+                    <option value="7">7 cọc</option>
+                    <option value="8">8 cọc</option>
+                </select>
+            </div>
+            <!--Chọn Khoảng cách giữa các cọc-->
+            <div class="form-group">
+                <label for="exampleSelects">Chọn khoảng cách giữa các cọc:</label>
+                <input class="form-control" type="text" value="3" id="txt_khoang_cach_coc" name="txt_khoang_cach_coc" />
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleSelects">TẢI TRỌNG PHÂN PHỐI VỀ CÁC CỌC :</label>
+            </div>
+
+            <table class="table table-striped" border="1">
+                <thead class="table-dark">
+                    <tr>
+                        <td>Tên Cọc</td>
+                        <td>xi</td>
+                        <td>yi</td>
+                        <td>Pi</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody_dsDanhMuc">
+                    <tr>
+                        <td>Cọc Thứ Nhất</td>
+                        <td>-0.52</td>
+                        <td>0</td>
+                        <td>750</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--kIỂM TRA-->
+            <div class="form-group">
+                <label for="exampleSelects">KIỂM TRA CÁC ĐIỀU KIỆN :</label>
+            </div>
+
+ <table class="table table-striped" border="1">
+                <thead class="table-dark">
+                    <tr>
+                        <td>ĐIỀU KIỆN</td>
+                        <td>THÔNG BÁO</td>
+
+                    </tr>
+                </thead>
+                <tbody id="tbody_kiemtra">
+                    <tr>
+                        <td>Dâm thủng chọc thủng:</td>
+                        <td>không đảm bảo.</td>
+
+                    </tr>
+                    <tr>
+                        <td>Bố trí khoảng cách </td>
+                        <td>Đã đảm bảo.</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="form-group">
+            <div class="container">
+                <h3 class="text-success float-lg-right" name="txt_kiemtra" id="txt_kiemtra"></h3>
+            </div>
+
+        </div>
+    </form>
+
+
+    <div class="card-footer">
+        <button class="btn btn-dark mr-2" id="btn_tinhtoan" name="btn_tinhtoan">Bố trí cọc.</button>
+        <button class="btn btn-dark mr-2 float-right" id="btn_botrithep" name="btn_botrithep" style="display:none" ><a href="~/KetquaTinhToan">Kết quả tính toán</a></button>
+    </div>
+
+
+    <!--end::Form-->
+</div>
+
+
+
+    
+
+
+
+<script>
+
+    $(document).ready(function () {
+        var N;
+        var str_sct = "";
+
+        $.ajax({
+            url: '/TinhToan/getALlSucCHiuTai',      // đây là API lấy ra tất cả các lớp đất
+            type: "post",
+            success: function (result) {
+                var succhiutai = JSON.parse(result);
+                $("#txt_pvl").html(succhiutai.Pvl + ' KN');
+                $("#txt_spt").html(succhiutai.Pcpt + ' KN');
+                $("#txt_cpt").html(succhiutai.Pspt + ' KN');
+                $("#txt_Ntc").html(succhiutai.Ntc + ' Tấn');
+                N = succhiutai.Ntc;
+
+                str_sct += " <option value='" + succhiutai.Pvl + "'>Sức chịu tải theo vật liệu.</option>"
+                str_sct += " <option value='" + succhiutai.Pcpt + "'>Sức chịu tải theo CPT.</option>"
+                str_sct += " <option value='" + succhiutai.Pspt + "'>Sức chịu tải theo SPT.</option>"
+                $("#cbb_succhiutai").html(str_sct);
+            }
+        });
+
+
+
+        $("#btn_tinhtoan").click(function () {
+            var dem = 0;
+
+            var succhiutai = $("#cbb_succhiutai").val();
+            var coc = ((N * 10) / succhiutai) * 1.2;
+            var coclamtron = Math.round(coc * 100) / 100;
+            $("#txt_coctt").html(coclamtron);
+            var kkc_2_coc = $("#txt_khoang_cach_coc").val();
+            var sococ = $("#cbb_chonlaicoc").val();
+            $("#txt_sococchonlai").html(sococ);
+
+            // Đẩy số cọc về server để tính toán :
+            $.ajax({
+                url: "/TinhToan/KiemTraDai",
+                type: "post",
+                data: { sococ: sococ, kkc_2_coc: kkc_2_coc, succhiutai: succhiutai },
+                success: function (result) {
+                    console.log(result);
+                    var str = "";
+                    var kq = JSON.parse(result);
+                    $("#txt_Ldai").html(kq.Ldai);
+                    $("#txt_Bdai").html(kq.Bdai);
+                    for (var i = 0; i < kq.dsCoc.length; i++) {
+                        str += "<tr>";
+                        str += "<td>" + kq.dsCoc[i].Name + "</td>"; // code soid layer
+                        str += "<td>" + kq.dsCoc[i].xi + "</td>";
+                        str += "<td>" + kq.dsCoc[i].yi + "</td>";
+                        str += "<td>" + kq.dsCoc[i].Pi + " <span class='text-danger'>KN</span></td>";
+                        str += "</td>";
+                    }
+                    var str_damthung = "";
+                    str_damthung += "<tr>"
+                    if (kq.str_ketquakiemtra=="1") {
+                        //$("#txt_kiemtra").attr('class', 'text-success float-lg-right');
+                        //$("#txt_kiemtra").html("P[max] < [P] => Chọn và bố trí cọc hợp lý.");
+                        dem++;
+                        str_damthung += "<td>Điều kiện về bố trí cọc và đài</td>";
+                        str_damthung += "<td><span class='text-success'>Kích thước đài và khoảng cách cọc  hợp lý.</span></td>";
+                    } else {
+                        //$("#txt_kiemtra").attr('class', 'text-danger float-lg-right');
+                        //$("#txt_kiemtra").html("P[max] > [P] => Bố Trí Chưa hợp lý ");
+                        str_damthung += "<td>Điều kiện về bố trí cọc và đài</td>";
+                        str_damthung += "<td><span class='text-danger'>Kích thước đài và khoảng cách cọc không hợp lý.</span></td>";
+                    }
+                    str_damthung += "<tr>"
+                    str_damthung += "<tr>"
+                    if (kq.Damthung == "1") {
+                        dem++
+                        str_damthung += "<td>Điểu kiên không bị đâm thủng</td>";
+                        str_damthung += "<td><span class='text-success'>Đảm bảo đài không bị cột đâm thủng</span></td>";
+                      
+                    } else {
+                        str_damthung += "<td>Điểu kiên không bị đâm thủng</td>";
+                        str_damthung += "<td><span class='text-danger'>không Đảm bảo.</span></td>";
+                    }
+                    str_damthung += "</tr>"
+                    // kiểm tra cột đâm thủng 
+                    str_damthung += "<tr>"
+                    if (kq.Chocthung=="0") {
+                        str_damthung += "<td>Điểu kiên Cọc chọc thủng đài</td>";
+                        str_damthung += "<td><span class='text-danger'>không Đảm bảo.</span></td>";
+                    } else {
+                        dem++
+                        str_damthung += "<td>Điểu kiên Cọc chọc thủng đài</td>";
+                        str_damthung += "<td><span class='text-success'>Đảm bảo cọc không đâm thủng đài.</span></td>";
+                    }
+                    str_damthung += "</tr>"
+                    $("#tbody_dsDanhMuc").html(str);
+                    $("#tbody_kiemtra").html(str_damthung);
+                    if (dem==3) {
+                         $("#txt_kiemtra").attr('class', 'text-success float-lg-right');
+                        $("#txt_kiemtra").html("CÓ THỂ BỐ TRÍ THÉP");
+                        $("#btn_botrithep").css("display", "block");
+                    } else {
+                        $("#txt_kiemtra").attr('class', 'text-danger float-lg-right');
+                        $("#txt_kiemtra").html("CHƯA THỂ BỐ TRÍ THÉP.");
+                    }
+
+                   
+
+                        
+                }
+            });
+
+        });
+    })
+
+
+</script>

@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card card-custom overflow-hidden">
+    <div class="card-body p-0">
+        <!-- begin: Invoice-->
+        <!-- begin: Invoice header-->
+        <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 py-md-27 px-md-0" style=" background-image: url(../../assets/media/bg/bg-8.jpg);">
+            <div class="col-md-10">
+                <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
+                    <h1 class="display-5 text-white font-weight-boldest mb-10">TRANG TÍNH TOÁN THÉP</h1>            
+                </div>
+              
+            </div>
+        </div>
+        <!-- end: Invoice header-->
+        <!-- begin: Invoice body-->
+        <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
+            <div class="col-md-9">
+
+                <div class="table-responsive">
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="pl-0 font-weight-bold text-muted text-uppercase">Description</th>
+
+                                <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Giá trị.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!--Hiển thị cốt thép :-->
+                            <!--Cốt thép theo phương X :-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Cốt thép theo phương X đã tính :</td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_X" name="txt_X">0</td>
+                            </tr>
+
+
+                            <!--Cốt thép theo phương y :-->
+                            <tr class="font-weight-boldest font-size-lg">
+                                <td class="pl-0 pt-7">Cốt thép theo phương Y đã tính : </td>
+                                <td class="text-danger pr-0 pt-7 text-right" id="txt_Y" name="txt_Y">0</td>
+                            </tr>
+
+                    
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="card card-custom">
+    <div class="card-header">
+        <h3 class="card-title">
+           CHỌN ĐƯỜNG KÍNH VÀ BỐ TRÍ THÉP :
+        </h3>
+    </div>
+    <!--begin::Form-->
+    <form class="form">
+        <div class="card-body">
+
+            <!--Chọn phương bố trí thép:-->
+            <div class="mb-3">
+                <h3 class="font-size-lg text-dark-75 font-weight-bold mb-10">Chọn phương bố trí thép <span class="text-danger">*</span></h3>
+                <div class="mb-2">
+                    <div class="form-group fv-plugins-icon-container has-success">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label class="option">
+                                    <span class="option-control">
+                                        <span class="radio radio-outline">
+                                            <input type="radio" checked name="rd_chon_thep" id="rd_chon_thep_X" value="0">
+                                            <span></span>
+                                        </span>
+                                    </span>
+                                    <span class="option-label">
+                                        <span class="option-head">
+                                            <span class="option-title">Bố trí thép thep phương X.</span>
+                                            <span class="option-focus" id="txt_as_phuong_x">0</span>
+                                        </span>
+                                      
+                                        <span class="option-body">khi bạn muốn bố trí thép cho phương x thì hãy chọn lựa chọn này.</span>
+                                    </span>
+                                       
+                                </label>
+                                <div class="fv-plugins-message-container"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="option">
+                                    <span class="option-control">
+                                        <span class="radio radio-outline">
+                                            <input type="radio" name="rd_chon_thep" id="rd_chon_thep_y" value="1">
+                                            <span></span>
+                                        </span>
+                                    </span>
+                                    <span class="option-label">
+                                        <span class="option-head">
+                                            <span class="option-title">Bố trí thép thep phương Y.</span>
+                                            <span class="option-focus" id="txt_thep_y">0</span>
+                                        </span>
+                                        <span class="option-body">Khi bạn muốn bố trí thép theo phương Y thì hãy chọn lựa chọn này.</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-check"></div>
+                        <div class="form-text text-muted"></div>
+                    </div>
+                </div>
+            </div>
+            <!--End chọn phương bố trí thép-->
+            <!--Chọn đường kính thép-->
+            <div class="form-group">
+                <label for="exampleSelects" class="font-weight-bold">Chọn đường kính thép<span class="text-danger"> * </span> :</label>
+                <select class="form-control form-control-sm" value="0" id="cbb_duongkinh" name="cbb_duongkinh">
+                    <option class="text-success font-weight-bold" value="12" selected>Ø12</option>
+                    <option class="text-success font-weight-bold" value="16">Ø16</option>
+                    <option class="text-success font-weight-bold" value="18">Ø18</option>
+                    <option class="text-success font-weight-bold" value="20">Ø20</option>
+                    <option class="text-success font-weight-bold" value="22">Ø22</option>
+                </select>
+            </div>
+            <!--Chọn số thanh-->
+            <div class="form-group">
+                <label for="exampleSelects" class="font-weight-bold">Chọn Số thanh thép<span class="text-danger font"> *</span>  :</label>
+                <select class="form-control form-control-sm" value="0" id="cbb_sothanh" name="cbb_sothanh">
+
+                    <option class="text-success font-weight-bold" selected value="3">3 thanh thép</option>
+                    <option class="text-success font-weight-bold" value="4">4  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="5">5  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="6">6  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="7">7  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="8">8  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="9">9  thanh thép</option>
+                    <option class="text-success font-weight-bold" value="10">10 thanh thép</option>
+                    <option class="text-success font-weight-bold" value="11">11 thanh thép</option>
+                    <option class="text-success font-weight-bold" value="12">12 thanh thép</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleSelects" class="font-weight-bold">Diện tích cốt thép được bố trí <span class="text-danger font"> =></span> <span class="text-success" id="txt_as_botri" name="txta_as_botri">53.9 cm2</span> </label>
+
+            </div>
+            <div class="form-group">
+                <label for="exampleSelects" class="font-weight-bold">Đang tính toán thép đài cho :  <span class="text-danger font"> =></span> <span class="text-success" id="txt_nguoidung">Vũ Văn Hòa</span> </label>
+
+            </div>
+        </div>   
+    </form>
+</div>
+
+
+<script>
+    var phuongchonthep = "0";
+    var sothanh = 0;
+    var duongkinh = 0;
+    var thepx = "";
+    var thepy = "";
+    var khoangcachthep = "";
+    function myChange() {
+        if ($("#rd_chon_thep_X").prop("checked") == true) {        
+            phuongchonthep = "0"; // Chọn theo phương X 
+        }
+        if ($("#rd_chon_thep_y").prop("checked") == true) {         
+            phuongchonthep = "1"; // CHọn theo phương Y 
+        }
+        // Chọn Phi Thép :
+        sothanh = $("#cbb_sothanh").val();
+        duongkinh = $("#cbb_duongkinh").val();
+    
+
+        $.ajax({
+            url: '/BoTriThep/Tinhthep',      // đây là API lấy ra tất cả các lớp đất
+            type: "post",
+            data: { phuongchonthep: phuongchonthep, duongkinh: duongkinh, sothanh: sothanh },
+            success: function (result) {
+                var rs = JSON.parse(result);
+                khoangcachthep = rs.KC;
+                $("#txt_as_botri").html(rs.As + " cm2");
+
+                // gán giá trí
+                if (phuongchonthep == "0") {
+                    // đang chọn cho thép X : 
+                    thepx = sothanh + "Ø" + duongkinh + "a" + khoangcachthep;
+                    $("#txt_X").html(thepx);
+                } else if (phuongchonthep == "1") {
+                    // đang chọn cho thép X : 
+                    thepy = sothanh + "Ø" + duongkinh + "a" + khoangcachthep;
+                    $("#txt_Y").html(thepy);
+                }
+                $("#txt_nguoidung").html(rs.name);
+
+            }
+        });
+    }
+
+    $("#btn_hoantat").click(function () {
+       
+    });
+
+    $("#cbb_sothanh").on('change', function () {
+        myChange();
+    });
+    $("#cbb_duongkinh").on('change', function () {
+        myChange();
+    });
+    $(document).ready(function () {
+        var N;
+        var str_sct = "";
+
+        $.ajax({
+            url: '/BoTriThep/LayRathongtinbotri',      // đây là API lấy ra tất cả các lớp đất
+            type: "post",
+            success: function (result) {
+                var kq = JSON.parse(result);
+                $("#txt_as_phuong_x").html(kq.ThepCanhDai + "-cm2");
+                $("#txt_thep_y").html(kq.ThepCanhNgan + "-cm2");
+
+            }
+        });
+
+    })
+</script>

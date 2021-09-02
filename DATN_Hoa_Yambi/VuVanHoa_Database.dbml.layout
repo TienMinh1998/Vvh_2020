@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.75" name="VuVanHoa_Database">
+  <DataContextMoniker Name="/VuVanHoa_DatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="6e97a266-fcbe-4892-8fff-81f525f19a41" absoluteBounds="0.75, 2, 2, 1.9631982421875003">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_betong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="584a5530-d4ee-4b3e-8b87-17f0d9136943" absoluteBounds="0.765, 2.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f6fced3e-a573-4dbd-baf5-42cb33a97e80" absoluteBounds="3.5, 1.25, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_coc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="909eb663-5859-4cb7-aa7e-a32ebb17a11b" absoluteBounds="3.515, 1.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5b1890ba-6217-4fbe-a600-f9a050a0fda9" absoluteBounds="0.75, 6, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_cot_thep" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3ea8c9c7-a23e-400f-927e-d3d7f35e934c" absoluteBounds="0.765, 6.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3deede7c-0842-4724-bb8d-5ded1ac0dd96" absoluteBounds="3.75, 5.75, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_daimong" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e957b46-26bc-4215-af39-92f2ea5d3a7b" absoluteBounds="3.765, 6.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e9d3320b-a6c1-4485-a42a-b4a63fc9d86d" absoluteBounds="6.75, 5.75, 2, 3.6939111328124987">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_lop_dat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="89fa6be0-132b-4b9b-b533-7bd55da9ca4f" absoluteBounds="6.765, 6.21, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a98a2be4-a612-4bce-80da-3e7bb02d864d" absoluteBounds="6.25, 1, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/VuVanHoa_DatabaseDataContext/tbl_User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a924de5-9b62-48b7-ad65-c07793a5127c" absoluteBounds="6.265, 1.46, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
